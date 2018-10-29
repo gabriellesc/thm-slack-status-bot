@@ -1,1 +1,1 @@
-bot: bin/bot
+bot: bot
