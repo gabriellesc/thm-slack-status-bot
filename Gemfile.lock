@@ -1,0 +1,16 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    fortune_gem (0.0.9)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  fortune_gem
+
+RUBY VERSION
+   ruby 2.3.1p112
+
+BUNDLED WITH
+   1.17.1
