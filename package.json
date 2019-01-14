@@ -1,0 +1,25 @@
+{
+  "name": "thmslackstatusbot",
+  "version": "1.0.0",
+  "description": "",
+  "engines": {
+    "node": "11.x"
+  },
+  "main": "index.js",
+  "scripts": {
+    "set_status": "node setMyStatus.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabriellesc/thm-slack-status-bot.git"
+  },
+  "author": "gabriellesc <gabriellesinghcadieux@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabriellesc/thm-slack-status-bot/issues"
+  },
+  "homepage": "https://github.com/gabriellesc/thm-slack-status-bot#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
