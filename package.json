@@ -5,8 +5,10 @@
   "engines": {
     "node": "11.x"
   },
-  "main": "index.js",
+  "main": "server.js",
+  "config": { "port": "3000" },
   "scripts": {
+    "start": "node server.js",
     "set_status": "node setMyStatus.js"
   },
   "repository": {

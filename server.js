@@ -3,8 +3,7 @@ const express = require('express');
 const fs = require('fs');
 const readline = require('readline');
 
-const PORT = 3000;
-const DEFAULT_EMOJI_FILE = 'emojis/animal_emojis';
+const DEFAULT_EMOJI_FILE = 'emojis/emojis';
 const FORTUNE_FILE = 'fortunes';
 
 async function getRandomLine(fileName) {
@@ -30,7 +29,14 @@ async function getRandomLine(fileName) {
     return line;
 }
 
-async function setRandomStatus(user, token, onSuccess, onError) {
+async function setRandomStatus({
+    user,
+    token,
+    onSuccess = () => {},
+    onError = () => {},
+    fortuneFile = FORTUNE_FILE,
+    emojiFile = DEFAULT_EMOJI_FILE,
+}) {
     const options = {
 	hostname: 'slack.com',
 	port: 443,
@@ -56,16 +62,19 @@ async function setRandomStatus(user, token, onSuccess, onError) {
 
 if (require.main === module) {
     const app = express();
-    app.get('/', async (req, res) => {
-	await setRandomStatus(
-	    process.env.USER_ID,
-	    process.env.TOKEN,
-	    () => res.sendStatus(200),
-	    (e) => res.status(500).send(e.message),
-	);
+
+    app.post('/', async (req, res) => {
+	res.sendStatus(200)
+
+	await setRandomStatus({
+	    user: process.env.USER_ID,
+	    token: process.env.TOKEN,
+	    onSuccess: () => res.sendStatus(200),
+	    onError: (e) => res.status(500).send(e.message),
+	});
     });
 
-    app.listen(PORT);
+    app.listen(process.env.npm_package_config_port);
 }
 
 exports.setRandomStatus = setRandomStatus;

@@ -1,3 +1,3 @@
 const { setRandomStatus } = require('./index.js')
 
-setRandomStatus(process.env.USER_ID, process.env.TOKEN, () => {}, () => {});
+setRandomStatus({ user: process.env.USER_ID, token: process.env.TOKEN });
